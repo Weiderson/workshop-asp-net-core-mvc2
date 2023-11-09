@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SalesWebMvc2.Models.Enums
+﻿namespace SalesWebMvc2.Models.Enums
 {
-    public enum Status : int
+    public enum SaleStatus : int
     {
-        Canceled = 0,
+        Pending = 0,
         Billed = 1,
-        Shiped = 2
+        Canceled = 2
     }
 }

@@ -9,6 +9,7 @@ namespace SalesWebMvc2.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public List<Seller> Sellers { get; set; } = new List<Seller>();
 
         public Department()
         {
@@ -18,6 +19,16 @@ namespace SalesWebMvc2.Models
         {
             Id = id;
             Name = name;
+        }
+
+        public void AddSeller(Seller seller)
+        {
+            Sellers.Add(seller);
+        }
+
+        public double TotalSales(DateTime minDate, DateTime maxDate)
+        {
+            return Sellers.Where(x => x.Department.Name == Name).Sum(x => x.TotalSales(minDate, maxDate));
         }
     }
 }
