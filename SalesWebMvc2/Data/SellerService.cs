@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SalesWebMvc2.Services
+namespace SalesWebMvc2.Data
 {
     public class SellerService
     {
