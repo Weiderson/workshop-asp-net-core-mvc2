@@ -10,8 +10,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using SalesWebMvc2.Data;
+using SalesWebMvc2.Models;
 using SalesWebMvc2.Services;
+using SalesWebMvc2.Data;
 
 namespace SalesWebMvc2
 {
