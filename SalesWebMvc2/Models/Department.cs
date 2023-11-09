@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace SalesWebMvc2.Models
 {
@@ -9,7 +8,7 @@ namespace SalesWebMvc2.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Seller> Sellers { get; set; } = new List<Seller>();
+        public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
 
         public Department()
         {
@@ -26,9 +25,9 @@ namespace SalesWebMvc2.Models
             Sellers.Add(seller);
         }
 
-        public double TotalSales(DateTime minDate, DateTime maxDate)
+        public double TotalSales(DateTime initial, DateTime final)
         {
-            return Sellers.Where(x => x.Department.Name == Name).Sum(x => x.TotalSales(minDate, maxDate));
+            return Sellers.Sum(x => x.TotalSales(initial, final));
         }
     }
 }
