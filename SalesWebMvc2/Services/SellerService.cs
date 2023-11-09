@@ -16,9 +16,9 @@ namespace SalesWebMvc2.Models
             _context = context;
         }
 
-        public List<Seller> FindById(Seller seller)
+        public List<Seller> FindById()
         {
-            return _context.Seller.Where(x => x.Id == seller.Id).ToList();
+            return _context.Seller.ToList();
         }
     }
 }

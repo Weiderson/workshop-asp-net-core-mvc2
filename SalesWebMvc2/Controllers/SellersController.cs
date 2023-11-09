@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SalesWebMvc2.Data;
+using SalesWebMvc2.Models;
 using SalesWebMvc2.Services;
 using System;
 using System.Collections.Generic;
@@ -10,17 +11,18 @@ namespace SalesWebMvc2.Controllers
 {
     public class SellersController : Controller
     {
-        private readonly SalesWebMvc2Context _context;
+        private readonly SellerService _sellerService;
 
-        public SellersController(SalesWebMvc2Context context)
+        public SellersController(SellerService sellerService)
         {
-            _context = context;
+            _sellerService = sellerService;
         }
 
-        public IActionResult Index(int? id)
+        public IActionResult Index()
         {
+            var list = _sellerService.FindById();
 
-            return View();
+            return View(list);
         }
     }
 }
