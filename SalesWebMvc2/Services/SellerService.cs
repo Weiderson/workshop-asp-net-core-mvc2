@@ -1,4 +1,5 @@
-﻿using SalesWebMvc2.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SalesWebMvc2.Data;
 using SalesWebMvc2.Models;
 using System;
 using System.Collections.Generic;
@@ -29,13 +30,20 @@ namespace SalesWebMvc2.Models
 
         public Seller FindById(int id)
         {
-            return _context.Seller.FirstOrDefault(obj => obj.Id == id);
+            return _context.Seller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id);
         }
 
         public void Remove(int id)
         {
             var obj = _context.Seller.Find(id);
             _context.Seller.Remove(obj);
+            _context.SaveChanges();
+        }
+
+        public void Update(Seller obj)
+        {
+            var seller = _context.Seller.Find(obj.Id);
+            _context.Seller.Update(seller);
             _context.SaveChanges();
         }
     }
